@@ -11,14 +11,14 @@ const TEMPLATE_COLORS = [
   '#ACE894'
 ]
 
-export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <MoneyReport />
-      </View>
-    );
-  }
+
+export default function App() {
+
+  return (
+    <View style={styles.container}>
+      <MoneyReport />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
