@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import MoneyReport from './src/pages/MoneyReport'
+import Menu from './src/components/Menu'
 
 const TEMPLATE_COLORS = [
   '#337CA0',
@@ -11,13 +12,15 @@ const TEMPLATE_COLORS = [
   '#ACE894'
 ]
 
-
 export default function App() {
 
   return (
-    <View style={styles.container}>
-      <MoneyReport />
-    </View>
+    <>
+      <Menu />
+      <View style={styles.container}>
+        <MoneyReport />
+      </View>
+    </>
   )
 }
 
