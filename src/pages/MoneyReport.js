@@ -4,17 +4,32 @@ import { Input, ButtonGroup, Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePicker from "react-native-modal-datetime-picker";
 
+import { getRandomDescription } from '../utils/'
+
 function MoneyReport() {
 
+  const defaultDescription = getRandomDescription()
+
+  const [description, setDescription] = useState(defaultDescription )
   const [amount, setAmount] = useState()
   const [dueDate, setDueDate] = useState(new Date().toDateString())
   const [showPicker, setShowPicker] = useState(false)
 
+
   const dollarIcon = <Icon name='dollar' size={24} color='white'/>
   const dateIcon = <Icon name='calendar' size={24} color='white'/>
+  const descriptionIcon = <Icon name='google-wallet' size={24} color='white'/>
 
   return (
     <>
+       <Input
+        placeholder="Concepto"
+        placeholderTextColor="#CCCEC8"
+        autoFocus
+        leftIcon={descriptionIcon}
+        onChangeText={setDescription}
+        value={description}
+      />
       <Input
         placeholder="Registra una cantidad"
         keyboardType="numeric"
