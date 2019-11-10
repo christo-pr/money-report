@@ -16,7 +16,9 @@ const SCHEMA = {
   }
 }
 
-const TABLES = Object.keys(SCHEMA)
+const TABLES = Object.keys(SCHEMA).map(t => {
+  return { [t.toUpperCase()]: t }
+}).shift()
 
 let database = null;
 
@@ -32,7 +34,7 @@ function db() {
 function get(table, criteria, onSuccess, onError) {
 
   db()
-    .transtaction(tx => {
+    .transaction(tx => {
       let query = `select * from ${table}`
       let where = ''
       let args = []
@@ -44,7 +46,11 @@ function get(table, criteria, onSuccess, onError) {
         })
       }
 
-      tx.executeSql(query + where, args)
+      console.log('query', query)
+
+      tx.executeSql(query + where, args, (t, data) => {
+        onSuccess(data.rows._array)
+      }, onError)
 
     })
 }
@@ -52,9 +58,9 @@ function get(table, criteria, onSuccess, onError) {
 function insert(table, data, onSuccess, onError) {
 
   db()
-    .transtaction(tx => {
+    .transaction(tx => {
       const fields = Object.keys(data).join(', ')
-      const values = Object.values(data).join(', ')
+      const values = Object.values(data).map(v => "'" + v + "'").join(', ')
       const sql =`insert into ${table} (${fields}) values (${values})`
 
       tx.executeSql(sql)
@@ -83,5 +89,6 @@ export default {
     console.log('[DB_LOG]: Init database')
     // Run migrations
     runMigrations()
-  }
+  },
+  tables: TABLES
 }

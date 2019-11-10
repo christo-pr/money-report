@@ -4,7 +4,7 @@ import { Input, ButtonGroup, Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePicker from "react-native-modal-datetime-picker";
 
-import { getRandomDescription } from '../utils/'
+import { getRandomDescription, saveExpense, getAllExpenses } from '../utils/'
 
 function MoneyReport() {
 
@@ -59,7 +59,14 @@ function MoneyReport() {
         onConfirm={(date) => { setDueDate(new Date(date).toDateString()); setShowPicker(false) }}
         onCancel={() => { setShowPicker(false) }}
       />
-      <Button title="Save" />
+      <Button
+        title="Save"
+        onPress={() => saveExpense()}
+      />
+      <Button
+        title="Get all"
+        onPress={() => getAllExpenses()}
+      />
     </>
   )
 
