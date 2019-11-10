@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
+
+import db from './src/utils/db'
 
 import MoneyReport from './src/pages/MoneyReport'
 import Menu from './src/components/Menu'
@@ -13,6 +15,12 @@ const TEMPLATE_COLORS = [
 ]
 
 export default function App() {
+
+  useEffect(() => {
+
+    db.init()
+
+  }, [])
 
   return (
     <>
