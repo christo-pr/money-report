@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import db from './src/utils/db'
@@ -15,6 +15,7 @@ const TEMPLATE_COLORS = [
 ]
 
 export default function App() {
+  const [listView, setListView] = useState(false)
 
   useEffect(() => {
 
@@ -24,9 +25,9 @@ export default function App() {
 
   return (
     <>
-      <Menu />
+      <Menu selected={listView ? 1 : 0} onChangeView={setListView}/>
       <View style={styles.container}>
-        <MoneyReport />
+        <MoneyReport listView={listView}/>
       </View>
     </>
   )

@@ -3,15 +3,20 @@ import { ButtonGroup } from 'react-native-elements'
 
 function Menu(props) {
 
-  const [selectedMenuItem, setSelectedMenu] = useState(0)
+  const [selectedMenuItem, setSelectedMenu] = useState(props.selected)
   const buttons = ['Nuevo Gasto', 'Gastos']
+
+  const onMenuItemPress = (selectedIndex) => {
+    setSelectedMenu(selectedIndex)
+    props.onChangeView(!props.selected)
+  }
 
   return (
     <ButtonGroup
-      onPress={setSelectedMenu}
+      onPress={onMenuItemPress}
       selectedIndex={selectedMenuItem}
       buttons={buttons}
-      containerStyle={{height: 100}}
+      containerStyle={{ height: 100 }}
     />
   )
 }
