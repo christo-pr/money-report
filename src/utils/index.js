@@ -31,14 +31,9 @@ export function saveExpense() {
   })
 }
 
-export function getAllExpenses() {
+export function getAllExpenses(done, error) {
 
   const tableName = db.tables.EXPENSES
 
-  db.get(tableName, {},  (data) => {
-    console.log(data)
-
-  }, (tx, error) => {
-    console.log('error')
-  })
+  db.get(tableName, {}, done, error)
 }

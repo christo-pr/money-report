@@ -46,8 +46,6 @@ function get(table, criteria, onSuccess, onError) {
         })
       }
 
-      console.log('query', query)
-
       tx.executeSql(query + where, args, (t, data) => {
         onSuccess(data.rows._array)
       }, onError)

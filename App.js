@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
 
 import db from './src/utils/db'
 
@@ -26,18 +25,7 @@ export default function App() {
   return (
     <>
       <Menu selected={listView ? 1 : 0} onChangeView={setListView}/>
-      <View style={styles.container}>
-        <MoneyReport listView={listView}/>
-      </View>
+      <MoneyReport listView={listView}/>
     </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#337CA0',
-  },
-});

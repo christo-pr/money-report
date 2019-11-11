@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TouchableWithoutFeedback, View } from 'react-native'
+import { TouchableWithoutFeedback, View, StyleSheet } from 'react-native'
 import { Input, ButtonGroup, Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePicker from "react-native-modal-datetime-picker";
@@ -24,7 +24,7 @@ function ExpenseForm(props) {
   const descriptionIcon = <Icon name='google-wallet' size={24} color='white'/>
 
   return (
-    <>
+    <View style={styles.container}>
        <Input
         placeholder="Concepto"
         placeholderTextColor="#CCCEC8"
@@ -70,8 +70,17 @@ function ExpenseForm(props) {
         title="Get all"
         onPress={() => getAllExpenses()}
       />
-    </>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#337CA0',
+  },
+});
 
 export default ExpenseForm
