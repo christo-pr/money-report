@@ -12,15 +12,15 @@ export function getRandomDescription() {
   return RANDOM_PHRASES[index]
 }
 
-export function saveExpense() {
+export function saveExpense(data) {
   const tableName = db.tables.EXPENSES
-  const data = {
-    due_date: '10deNov',
-    description: 'Testing description',
-    amount: 199
+  const expense = {
+    due_date: data.dueDate,
+    description: data.description,
+    amount: data.amount
   }
 
-  db.insert(tableName, data, (tx, success) => {
+  db.insert(tableName, expense, (tx, success) => {
     console.log('success')
     console.log(success)
 

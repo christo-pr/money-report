@@ -7,7 +7,6 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 import {
   getRandomDescription,
   saveExpense,
-  getAllExpenses
 } from '../utils/'
 
 function ExpenseForm(props) {
@@ -64,11 +63,7 @@ function ExpenseForm(props) {
       />
       <Button
         title="Save"
-        onPress={() => saveExpense()}
-      />
-      <Button
-        title="Get all"
-        onPress={() => getAllExpenses()}
+        onPress={() => saveExpense({ amount, dueDate, description })}
       />
     </View>
   )

@@ -14,7 +14,7 @@ function ExpensesList(props) {
       setExpenses(data)
 
       const total = data.reduce((acc, value) => {
-          return acc + value.amount
+          return parseFloat(acc + parseFloat(value.amount))
       }, 0)
 
       setTotal(total)
